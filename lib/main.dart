@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:splash_screen/OnBoard/IntroScreen.dart';
+
 
 import 'SplashScreen.dart';
+import 'WelcomeScreen/WelcomeScreen.dart';
 
 
 
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SplashScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

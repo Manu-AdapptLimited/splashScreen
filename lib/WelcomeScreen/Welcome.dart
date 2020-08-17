@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 class SliderModel{
 
   String imageAssetPath;
@@ -40,25 +39,25 @@ List<SliderModel> getSlides(){
   SliderModel sliderModel = new SliderModel();
 
   //1
-  sliderModel.setDesc("Discover New offering the best products near you on Your best App");
-  sliderModel.setTitle("Search");
-  sliderModel.setImageAssetPath("assets/images/search.png");
+  sliderModel.setDesc("Welcome to pune Ladies group\nExplore and aveil products and \n services offered by ladies of Pune city");
+  sliderModel.setTitle("Welcome to the Club!");
+  sliderModel.setImageAssetPath("assets/images/illustration.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
 
   //2
-  sliderModel.setDesc("Our veggie plan is filled with delicious seasonal vegetables, whole grains, beautiful cheeses and vegetarian proteins");
-  sliderModel.setTitle("Order");
-  sliderModel.setImageAssetPath("assets/images/order.jpg");
+  sliderModel.setDesc("one stop destionation for products and\nexpert local services in Pune Gel dozens of\ntrusted professional near you to take care\nof all your needs.");
+  sliderModel.setTitle("Products");
+  sliderModel.setImageAssetPath("assets/images/illustration4.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
 
   //3
-  sliderModel.setDesc("Products delivery or pickup from local shops, Explore shops that deliver near you.");
-  sliderModel.setTitle("Delivery");
-  sliderModel.setImageAssetPath("assets/images/delivery.jpg");
+  sliderModel.setDesc("Beauty, Repair, Cleaning, Grooming & \n many more Services by verified\nprofessional Book Today!");
+  sliderModel.setTitle("Services");
+  sliderModel.setImageAssetPath("assets/images/illustration3.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
