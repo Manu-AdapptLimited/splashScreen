@@ -1,9 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:splash_screen/OnBoard/IntroScreen.dart';
-
-
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -11,11 +8,6 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-
-
-
-
-
   @override
   void initState() {
     super.initState();
@@ -30,18 +22,15 @@ class _SplashScreenState extends State<SplashScreen> {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-                Colors.lightBlue[100],
-                Colors.lightBlue[200],
-                 Colors.lightBlue[100],
-                 Colors.lightBlue[200],
-
-              ])
-              
-              ),
+                gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                  Colors.lightBlue[100],
+                  Colors.lightBlue[200],
+                  Colors.lightBlue[100],
+                  Colors.lightBlue[200],
+                ])),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -52,10 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-
-                     
                       CircleAvatar(
-
                           backgroundColor: Colors.blue[100],
                           radius: 50.0,
                           child: Image.asset(
@@ -106,11 +92,11 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(Duration(seconds: 10), onDoneLoading);
+    return Timer(Duration(seconds: 5), onDoneLoading);
   }
 
   onDoneLoading() async {
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => Home()));
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => Home()));
   }
 }
