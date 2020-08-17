@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:splash_screen/OnBoard/IntroScreen.dart';
 
-import 'MyNavigator.dart';
+
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -110,6 +111,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   onDoneLoading() async {
     Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => MyNavigator()));
+        MaterialPageRoute(builder: (context) => Home()));
   }
 }

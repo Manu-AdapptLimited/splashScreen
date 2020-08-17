@@ -40,9 +40,9 @@ List<SliderModel> getSlides(){
   SliderModel sliderModel = new SliderModel();
 
   //1
-  sliderModel.setDesc("Discover Restaurants offering the best fast food food near you on Foodwa");
+  sliderModel.setDesc("Discover New offering the best products near you on Your best App");
   sliderModel.setTitle("Search");
-  sliderModel.setImageAssetPath("assets/images/illustration.png");
+  sliderModel.setImageAssetPath("assets/images/search.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
@@ -50,15 +50,15 @@ List<SliderModel> getSlides(){
   //2
   sliderModel.setDesc("Our veggie plan is filled with delicious seasonal vegetables, whole grains, beautiful cheeses and vegetarian proteins");
   sliderModel.setTitle("Order");
-  sliderModel.setImageAssetPath("assets/images/illustration2.png");
+  sliderModel.setImageAssetPath("assets/images/order.jpg");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
 
   //3
-  sliderModel.setDesc("Food delivery or pickup from local restaurants, Explore restaurants that deliver near you.");
-  sliderModel.setTitle("Eat");
-  sliderModel.setImageAssetPath("assets/images/illustration3.png");
+  sliderModel.setDesc("Products delivery or pickup from local shops, Explore shops that deliver near you.");
+  sliderModel.setTitle("Delivery");
+  sliderModel.setImageAssetPath("assets/images/delivery.jpg");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
