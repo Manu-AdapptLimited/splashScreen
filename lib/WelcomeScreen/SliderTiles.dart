@@ -14,13 +14,13 @@ class SlideTiles extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-            height: 180,
-            width: MediaQuery.of(context).size.width-40,
+              height: 180,
+              width: MediaQuery.of(context).size.width-40,
 
-            child: Image.asset(
-              imagePath,
+              child: Image.asset(
+                imagePath,
+              ),
             ),
-          ),
           SizedBox(
             height: 60,
           ),
