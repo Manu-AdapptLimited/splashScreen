@@ -1,5 +1,7 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:splash_screen/Complain/QueriesList.dart';
+import 'package:splash_screen/Complain/Topic.dart';
 
 class Service extends StatefulWidget {
   @override
@@ -65,33 +67,29 @@ class _ServiceState extends State<Service> {
           ),
           SliverToBoxAdapter(
             child: Container(
-              margin: EdgeInsets.only(left: 10,right: 10,top: 10),
+              margin: EdgeInsets.only(left: 10, right: 10, top: 10),
               child: FlatButton.icon(
                 color: Colors.white,
                 onPressed: () {},
-                icon: Icon(Icons.search,color: Colors.black54,),
-                label: Text('Search a question',style: TextStyle(
+                icon: Icon(
+                  Icons.search,
                   color: Colors.black54,
-
-                ),),
+                ),
+                label: Text(
+                  'Search a question',
+                  style: TextStyle(
+                    color: Colors.black54,
+                  ),
+                ),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(5.0),
-                    // side: BorderSide(color: Colors.red)
-                    ),
+                  borderRadius: BorderRadius.circular(5.0),
+                  // side: BorderSide(color: Colors.red)
+                ),
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              margin: EdgeInsets.only(left: 10, right: 10, top: 15),
-              child: Text(
-                'Popular Topic',
-                style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.black45,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
+          Topic(
+            topic: 'Popular Topic',
           ),
           SliverToBoxAdapter(
             child: Container(
@@ -301,124 +299,51 @@ class _ServiceState extends State<Service> {
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: Container(
-              margin: EdgeInsets.only(left: 10, right: 10, top: 20),
-              child: Text(
-                'Popular Searches',
-                style: TextStyle(
-                    fontSize: 17,
-                    color: Colors.black45,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
+          Topic(
+            topic: 'Popular Searches',
           ),
           SliverToBoxAdapter(
             child: Container(
-              height: 300,
+              height: 250,
               width: MediaQuery.of(context).size.width,
               color: Colors.white,
               margin: EdgeInsets.only(left: 10, right: 10, top: 10),
               child: Column(
                 children: [
-                  Container(
-                    height: 44,
-                    padding: EdgeInsets.only(left: 8, right: 8, top: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'I am not happy with quality of product',
-                          style: TextStyle(
-                              color: Colors.black45,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.grey[400],
-                          size: 19,
-                        ),
-                      ],
-                    ),
+                  QueriesList(
+                    question: 'I am not happy with quality of product',
                   ),
                   Divider(
+                    height: 0,
+                    color: Colors.grey[200],
+                    thickness: 2.5,
                     endIndent: 25,
-                    color: Colors.black45,
                   ),
-                  Container(
-                    height: 44,
-                    padding: EdgeInsets.only(left: 8, right: 8, top: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'I am unableto log in / sign up',
-                          style: TextStyle(
-                              color: Colors.black45,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.grey[400],
-                          size: 19,
-                        ),
-                      ],
-                    ),
+                  QueriesList(
+                    question: 'I am unableto log in / sign up',
                   ),
                   Divider(
+                    height: 0,
+                    color: Colors.grey[200],
+                    thickness: 2.5,
                     endIndent: 25,
-                    color: Colors.black45,
                   ),
-                  Container(
-                    height: 44,
-                    padding: EdgeInsets.only(left: 8, right: 8, top: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'I want to change thr delivery slot',
-                          style: TextStyle(
-                              color: Colors.black45,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.grey[400],
-                          size: 19,
-                        ),
-                      ],
-                    ),
+                  QueriesList(
+                    question: 'I want to change thr delivery slot',
                   ),
                   Divider(
+                    height: 0,
+                    color: Colors.grey[200],
+                    thickness: 2.5,
                     endIndent: 25,
-                    color: Colors.black45,
+                  ),
+                  QueriesList(
+                    question: 'I want to contact customer service',
                   ),
                   Container(
-                    height: 44,
-                    padding: EdgeInsets.only(left: 8, right: 8, top: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'I want to contact customer service',
-                          style: TextStyle(
-                              color: Colors.black45,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: Colors.grey[400],
-                          size: 19,
-                        ),
-                      ],
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      print('tapped show more');
-                    },
-                    child: Container(
-                      margin: EdgeInsets.only(top: 15),
+                    alignment: Alignment.center,
+                    child: FlatButton(
+                      onPressed: () {},
                       child: Column(
                         children: [
                           Text(

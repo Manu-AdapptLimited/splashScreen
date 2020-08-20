@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:splash_screen/Complain/Queries.dart';
 import 'package:splash_screen/CoustumerService/Service.dart';
 
 import 'SmartBasket/SmartBasket.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SmartBasket(),
+      home:Service(),
     );
   }
 }
