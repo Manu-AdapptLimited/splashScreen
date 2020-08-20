@@ -9,6 +9,7 @@ class ItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      
             height: 55,
             width: MediaQuery.of(context).size.width,
             child: ListView.builder(
@@ -17,7 +18,12 @@ class ItemList extends StatelessWidget {
                 itemBuilder: (context, index) {
                   if (index == 0) {
                     return Card(
+
                       child: Container(
+                       decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(5))
+                       ),
                         alignment: Alignment.center,
                         padding: EdgeInsets.only(
                           top: 8,

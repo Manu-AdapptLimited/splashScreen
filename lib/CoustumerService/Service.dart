@@ -32,73 +32,58 @@ class _ServiceState extends State<Service> {
             pinned: true,
           ),
           SliverToBoxAdapter(
-            child: Stack(
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 90,
-                  decoration: BoxDecoration(
-                    color: Colors.blue[500],
-                  ),
-                ),
-                Positioned(
-                  child: ClipOval(
-                    child: Container(
-                      padding: EdgeInsets.only(top: 20),
-                      alignment: Alignment.topCenter,
-                      width: MediaQuery.of(context).size.width,
-                      height: 110,
-                      color: Colors.blue[500],
-                      child: Column(
-                        children: [
-                          Text(
-                            'Login to see ad manage all your orders',
-                            style: TextStyle(color: Colors.white, fontSize: 16),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: FlatButton(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  side: BorderSide(color: Colors.white)),
-                              child: Text(
-                                'LOGIN',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 16),
-                              ),
-                              onPressed: () {},
-                            ),
-                          )
-                        ],
+            child: ClipPath(
+              clipper: CurvClipper(),
+              child: Container(
+                padding: EdgeInsets.only(top: 35),
+                height: 130,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.blue[400],
+                child: Column(
+                  children: [
+                    Text(
+                      'Login to see ad manage all your orders',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10),
+                      child: FlatButton(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5.0),
+                            side: BorderSide(color: Colors.white)),
+                        child: Text(
+                          'LOGIN',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                        onPressed: () {},
                       ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              margin: EdgeInsets.only(top: 20, left: 10, right: 10),
-              height: 40,
-              child: TextField(
-                decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 10),
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.only(left: 100, right: 5),
-                      child: Icon(Icons.search),
-                    ),
-                    enabledBorder: new OutlineInputBorder(
-                        borderSide: new BorderSide(color: Colors.grey[200])),
-                    filled: true,
-                    fillColor: Colors.white,
-                    hintText: 'Search a question'),
+                    )
+                  ],
+                ),
               ),
             ),
           ),
           SliverToBoxAdapter(
             child: Container(
-              margin: EdgeInsets.only(left: 10, right: 10, top: 20),
+              margin: EdgeInsets.only(left: 10,right: 10,top: 10),
+              child: FlatButton.icon(
+                color: Colors.white,
+                onPressed: () {},
+                icon: Icon(Icons.search,color: Colors.black54,),
+                label: Text('Search a question',style: TextStyle(
+                  color: Colors.black54,
+
+                ),),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.0),
+                    // side: BorderSide(color: Colors.red)
+                    ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              margin: EdgeInsets.only(left: 10, right: 10, top: 15),
               child: Text(
                 'Popular Topic',
                 style: TextStyle(
@@ -218,7 +203,8 @@ class _ServiceState extends State<Service> {
                               size: 18,
                             ),
                             child: Image.asset(
-                              'assets/images/account.jpeg',height: 40,
+                              'assets/images/account.jpeg',
+                              height: 40,
                             ),
                           ),
                         ),
@@ -263,7 +249,11 @@ class _ServiceState extends State<Service> {
                       children: [
                         Container(
                           height: 45,
-                          child:  Icon(Icons.help_outline,size: 39,color: Color.fromRGBO(134, 158, 175, 1),),
+                          child: Icon(
+                            Icons.help_outline,
+                            size: 39,
+                            color: Color.fromRGBO(134, 158, 175, 1),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
@@ -352,7 +342,6 @@ class _ServiceState extends State<Service> {
                     ),
                   ),
                   Divider(
-                   
                     endIndent: 25,
                     color: Colors.black45,
                   ),
@@ -377,7 +366,6 @@ class _ServiceState extends State<Service> {
                     ),
                   ),
                   Divider(
-                   
                     endIndent: 25,
                     color: Colors.black45,
                   ),
@@ -402,7 +390,6 @@ class _ServiceState extends State<Service> {
                     ),
                   ),
                   Divider(
-                   
                     endIndent: 25,
                     color: Colors.black45,
                   ),
@@ -426,7 +413,7 @@ class _ServiceState extends State<Service> {
                       ],
                     ),
                   ),
-                 GestureDetector(
+                  GestureDetector(
                     onTap: () {
                       print('tapped show more');
                     },
@@ -452,5 +439,26 @@ class _ServiceState extends State<Service> {
         ],
       ),
     );
+  }
+}
+
+class CurvClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0.0, size.height - 25);
+    path.quadraticBezierTo(
+        size.width / 4, size.height, size.width / 2, size.height);
+
+    path.quadraticBezierTo(size.width - (size.width / 4), size.height,
+        size.width, size.height - 25);
+
+    path.lineTo(size.width, 0.0);
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
   }
 }
