@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:splash_screen/BeautyStore/BeautyStore.dart';
 import 'package:splash_screen/Complain/Queries.dart';
 import 'package:splash_screen/CoustumerService/Service.dart';
+import 'package:splash_screen/Faqs/Faq.dart';
 
 import 'SmartBasket/SmartBasket.dart';
 import 'WelcomeScreen/WelcomeScreen.dart';
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:Service(),
+      home:Faq(),
     );
   }
 }

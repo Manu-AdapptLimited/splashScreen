@@ -31,6 +31,7 @@ dependencies:
   badges: ^1.1.1
   material_design_icons_flutter: ^4.0.5345
   font_awesome_flutter: ^8.8.1
+  carousel_pro: ^1.0.0
 
 dev_dependencies:
   flutter_test:
