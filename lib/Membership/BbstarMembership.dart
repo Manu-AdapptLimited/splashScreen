@@ -49,6 +49,27 @@ class _BbstarMembershipState extends State<BbstarMembership> {
                         children: [
                           JoinOffer(),
                           CashBack(),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 90),
+                            child: Container(
+                              height: 45,
+                              width: MediaQuery.of(context).size.width-20,
+
+                              child: FlatButton(
+                                color: Colors.red[300],
+                                onPressed: (){}, child: Text('Join Now',style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17
+                                ),))),
+                          ),
+
+                          Padding(
+                            padding: const EdgeInsets.only(top: 40),
+                            child: Text('You can cancel anytime within first 15 days',style: TextStyle(
+                              color: Colors.white,
+                              
+                            ),),
+                          )
                         ],
                       ),
                     ),
@@ -196,23 +217,39 @@ class MyPainter extends CustomPainter {
     couponPath.lineTo(80, 650);
     couponPath.lineTo(89, 641);
     couponPath.lineTo(95, 650);
-    couponPath.lineTo(310, 650);
-    couponPath.lineTo(310, 640);
-    couponPath.quadraticBezierTo(293, 625, 310, 620);
-    couponPath.lineTo(310, 610);
+    couponPath.lineTo(330, 650);
+    couponPath.lineTo(330, 640);
+    couponPath.quadraticBezierTo(315, 628, 330, 620);
+    couponPath.lineTo(330, 610);
     couponPath.lineTo(95, 610);
     couponPath.lineTo(89, 619);
     couponPath.lineTo(80, 610);
-    paint.color = Color.fromRGBO(60, 90, 30, 0.8);
+    paint.color = Color.fromRGBO(60, 90, 30, 0.5);
     paint.style = PaintingStyle.fill;
-    TextPainter(
-      text: TextSpan(
-        text: ''
-      )
-    );
     couponPath.close();
     canvas.drawPath(couponPath, paint);
+
+    final textStyle = TextStyle(
+      color: Colors.white,
+      fontSize: 15,
+    );
+    final textSpan = TextSpan(
+      text: 'Proceed to see available copons',
+      style: textStyle,
+    );
+    final textPainter = TextPainter(
+      text: textSpan,
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout(
+      minWidth: 0,
+      maxWidth: size.width,
+    );
+    final offset = Offset(100, 620);
+    textPainter.paint(canvas, offset);
   }
+
+  
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
