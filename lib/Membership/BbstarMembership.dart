@@ -70,7 +70,7 @@ class MyPainter extends CustomPainter {
     final height = size.height;
     final width = size.width;
     Paint paint = Paint()
-      ..strokeWidth = 1.2
+      ..strokeWidth = 2.2
       ..style = PaintingStyle.stroke
       ..color = Colors.black;
 
@@ -164,30 +164,54 @@ class MyPainter extends CustomPainter {
     curvy.lineTo(width, 190);
     curvy.close();
     canvas.drawPath(curvy, curvePaint);
-
+//bottom curve
     final Gradient bottomCurveGradient = LinearGradient(
-      begin: Alignment.bottomLeft,
-      end: Alignment.topRight,
-      colors: [
-         Color.fromRGBO(140, 200, 71, 0.6),
-      Color.fromRGBO(63, 187, 115, 1),
-     
-    ],
-    stops: [
-      0.0,
-     1.0
-    ]
-    );
+        begin: Alignment.bottomLeft,
+        end: Alignment.topRight,
+        colors: [
+          Color.fromRGBO(140, 200, 71, 0.6),
+          Color.fromRGBO(63, 187, 115, 1),
+        ],
+        stops: [
+          0.0,
+          1.0
+        ]);
 
-    final Paint bottomCurvePaint = Paint()..shader = bottomCurveGradient.createShader(rect);
+    final Paint bottomCurvePaint = Paint()
+      ..shader = bottomCurveGradient.createShader(rect);
     Path bottomCurve = Path();
     bottomCurve.moveTo(0, 610);
-    bottomCurve.quadraticBezierTo(70, 560, 55, 660);
+    bottomCurve.quadraticBezierTo(70, 565, 60, 660);
     bottomCurve.cubicTo(40, 760, 200, height - 90, 130, height);
     bottomCurve.lineTo(0, height);
     bottomCurve.close();
-    paint.color = Colors.black;
     canvas.drawPath(bottomCurve, bottomCurvePaint);
+//coupon banner
+    Path couponPath = Path();
+    couponPath.moveTo(30, 610);
+    couponPath.moveTo(30, 610);
+    couponPath.lineTo(30, 620);
+    couponPath.quadraticBezierTo(45, 630, 30, 640);
+    couponPath.lineTo(30, 650);
+    couponPath.lineTo(80, 650);
+    couponPath.lineTo(89, 641);
+    couponPath.lineTo(95, 650);
+    couponPath.lineTo(310, 650);
+    couponPath.lineTo(310, 640);
+    couponPath.quadraticBezierTo(293, 625, 310, 620);
+    couponPath.lineTo(310, 610);
+    couponPath.lineTo(95, 610);
+    couponPath.lineTo(89, 619);
+    couponPath.lineTo(80, 610);
+    paint.color = Color.fromRGBO(60, 90, 30, 0.8);
+    paint.style = PaintingStyle.fill;
+    TextPainter(
+      text: TextSpan(
+        text: ''
+      )
+    );
+    couponPath.close();
+    canvas.drawPath(couponPath, paint);
   }
 
   @override
