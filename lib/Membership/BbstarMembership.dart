@@ -102,7 +102,6 @@ class _BbstarMembershipState extends State<BbstarMembership> {
 class MyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    
     final height = size.height;
     final width = size.width;
     Paint paint = Paint()
@@ -169,17 +168,10 @@ class MyPainter extends CustomPainter {
     // paint.color = Colors.white;
     painter.style = PaintingStyle.fill;
     canvas.drawPath(mainBackGround, painter);
-    
+
     //Half circle diamension
     var halfCircle = Offset(0, height * 0.22);
     canvas.drawCircle(halfCircle, 60, circlePaint);
-
-    // Path ovalPath = Path();
-    // ovalPath.moveTo(width, 250);
-    // ovalPath.quadraticBezierTo(width - 80, 290, width - 40, 190);
-    // ovalPath.quadraticBezierTo(width - 20, 150, width - 70, 140);
-    // ovalPath.quadraticBezierTo(width-150, 130, width - 120, 90);
-    // canvas.drawPath(ovalPath, paint);
 
     //firstcurve diamension
     Path curvePath = Path();
@@ -318,7 +310,6 @@ class MyPainter extends CustomPainter {
       ..shader = cirGradient.createShader(rect)
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
-
     circlePath.moveTo(90, 40);
     canvas.drawCircle(Offset(90, 40), 6, cirPaint);
 
@@ -327,7 +318,7 @@ class MyPainter extends CustomPainter {
       ..color = Colors.white
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
-     paint.color = Colors.white;
+    paint.color = Colors.white;
     canvas.drawCircle(Offset(240, 210), 4, ciPaint);
 
     Path linePath = Path();
@@ -352,22 +343,20 @@ class MyPainter extends CustomPainter {
     // }
     // linePath.close();
 
-    linePath.moveTo(165, 50);
     linePath.moveTo(160, 50);
     linePath.lineTo(90, 125);
     linePath.quadraticBezierTo(75, 140, 90, 155); //second corner
     linePath.lineTo(160, 226);
-    linePath.moveTo(190, 226);
     linePath.lineTo(260, 155);
     linePath.moveTo(260, 125);
-    linePath.lineTo(188, 50);
     linePath.moveTo(160, 50);
     linePath.quadraticBezierTo(175, 35, 188, 50); //first corner
+    linePath.lineTo(260, 125);
     linePath.moveTo(160, 226);
     linePath.quadraticBezierTo(175, 242, 190, 226); //third corner
-    linePath.moveTo(260, 155);
+    linePath.lineTo(260, 155);
     linePath.quadraticBezierTo(276, 140, 260, 125); //fourth corner
-    linePath.moveTo(260, 125);
+    linePath.lineTo(260, 125);
     linePath.close();
     canvas.drawPath(linePath, bbStarPaint); //square  end here
 
