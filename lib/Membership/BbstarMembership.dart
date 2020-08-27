@@ -1,5 +1,6 @@
-import 'dart:math';
 import 'dart:ui';
+
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -26,6 +27,14 @@ class _BbstarMembershipState extends State<BbstarMembership> {
                 width: MediaQuery.of(context).size.width,
                 child: Stack(
                   children: [
+                    // Positioned(
+                    //   left: 70,
+                    //   top: 20,
+                    //   child: Container(
+                    //       height: 210,
+                    //       child: Image.asset('assets/images/members.gif',
+                    //           fit: BoxFit.cover)),
+                    // ),
                     Positioned(
                         left: 40,
                         top: 40,
@@ -52,23 +61,28 @@ class _BbstarMembershipState extends State<BbstarMembership> {
                           Padding(
                             padding: const EdgeInsets.only(top: 90),
                             child: Container(
-                              height: 45,
-                              width: MediaQuery.of(context).size.width-20,
-
-                              child: FlatButton(
-                                color: Colors.red[300],
-                                onPressed: (){}, child: Text('Join Now',style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 17
-                                ),))),
+                                height: 45,
+                                width: MediaQuery.of(context).size.width - 20,
+                                child: FlatButton(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(5))),
+                                    color: Colors.red[300],
+                                    onPressed: () {},
+                                    child: Text(
+                                      'Join Now',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 17),
+                                    ))),
                           ),
-
                           Padding(
                             padding: const EdgeInsets.only(top: 40),
-                            child: Text('You can cancel anytime within first 15 days',style: TextStyle(
-                              color: Colors.white,
-                              
-                            ),),
+                            child: Text(
+                              'You can cancel anytime within first 15 days',
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
                           )
                         ],
                       ),
@@ -91,7 +105,9 @@ class MyPainter extends CustomPainter {
     final height = size.height;
     final width = size.width;
     Paint paint = Paint()
+      // ..maskFilter =MaskFilter.blur(BlurStyle.inner, 10.0)
       ..strokeWidth = 2.2
+      ..isAntiAlias = true
       ..style = PaintingStyle.stroke
       ..color = Colors.black;
 
@@ -147,9 +163,9 @@ class MyPainter extends CustomPainter {
 
     Path mainBackGround = Path();
     mainBackGround.addRect(Rect.fromLTRB(0, 0, width, height));
-    paint.color = Color.fromRGBO(104, 159, 57, 1);
-    // paint.color = Colors.white;
-    paint.style = PaintingStyle.fill;
+    // paint.color = Color.fromRGBO(104, 159, 57, 1);
+    paint.color = Colors.white;
+    // paint.style = PaintingStyle.fill;
     canvas.drawPath(mainBackGround, paint);
     //Half circle diamension
     var halfCircle = Offset(0, height * 0.22);
@@ -210,22 +226,21 @@ class MyPainter extends CustomPainter {
 //coupon banner
     Path couponPath = Path();
     couponPath.moveTo(30, 610);
-    couponPath.moveTo(30, 610);
     couponPath.lineTo(30, 620);
     couponPath.quadraticBezierTo(45, 630, 30, 640);
     couponPath.lineTo(30, 650);
-    couponPath.lineTo(80, 650);
-    couponPath.lineTo(89, 641);
-    couponPath.lineTo(95, 650);
+    couponPath.lineTo(62, 650);
+    couponPath.lineTo(70, 644);
+    couponPath.lineTo(76, 650);
     couponPath.lineTo(330, 650);
     couponPath.lineTo(330, 640);
     couponPath.quadraticBezierTo(315, 628, 330, 620);
     couponPath.lineTo(330, 610);
-    couponPath.lineTo(95, 610);
-    couponPath.lineTo(89, 619);
-    couponPath.lineTo(80, 610);
-    paint.color = Color.fromRGBO(60, 90, 30, 0.5);
-    paint.style = PaintingStyle.fill;
+    couponPath.lineTo(76, 610);
+    couponPath.lineTo(70, 617);
+    couponPath.lineTo(60, 610);
+    // paint.color = Color.fromRGBO(60, 90, 30, 0.5);
+    // paint.style = PaintingStyle.fill;
     couponPath.close();
     canvas.drawPath(couponPath, paint);
 
@@ -245,11 +260,124 @@ class MyPainter extends CustomPainter {
       minWidth: 0,
       maxWidth: size.width,
     );
-    final offset = Offset(100, 620);
+    final offset = Offset(85, 620);
     textPainter.paint(canvas, offset);
-  }
 
-  
+    final icon = Icons.star;
+    TextPainter textPainters = TextPainter(textDirection: TextDirection.rtl);
+    textPainters.text = TextSpan(
+        text: String.fromCharCode(icon.codePoint),
+        style: TextStyle(fontSize: 20.0, fontFamily: icon.fontFamily));
+    textPainters.layout();
+    textPainters.paint(canvas, Offset(41.0, 620.0));
+
+    Path rectPath = Path();
+
+    final Gradient rectGradient = LinearGradient(
+        // begin: Alignment.topLeft,
+        // end: Alignment.bottomRight,
+        colors: [
+          Color.fromRGBO(104, 159, 57, 1),
+          Color.fromRGBO(244, 134, 44, 1),
+          Color.fromRGBO(160, 157, 52, 1),
+          Color.fromRGBO(104, 159, 57, 1),
+          Color.fromRGBO(250, 197, 78, 1),
+        ], stops: [
+      0.2,
+      0.3,
+      0.4,
+      0.7,
+      0.9
+    ]);
+    Paint rectPaint = Paint()
+      ..strokeWidth = 13
+      ..color = Colors.black
+      ..shader = rectGradient.createShader(rect)
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
+    rectPath.moveTo(129, 40);
+    rectPath.lineTo(90, 80);
+    canvas.drawPath(rectPath, rectPaint);
+
+    Path circlePath = Path();
+    final Gradient cirGradient = LinearGradient(
+      // begin: Alignment.topLeft,
+      // end: Alignment.bottomRight,
+      colors: [
+        Color.fromRGBO(104, 159, 57, 1),
+        Color.fromRGBO(244, 134, 44, 1),
+        Color.fromRGBO(160, 157, 52, 1),
+        Color.fromRGBO(104, 159, 57, 1),
+      ],
+    );
+    Paint cirPaint = Paint()
+      ..strokeWidth = 4
+      ..color = Colors.black
+      ..shader = cirGradient.createShader(rect)
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
+
+    circlePath.moveTo(90, 40);
+    canvas.drawCircle(Offset(90, 40), 6, cirPaint);
+
+    Paint ciPaint = Paint()
+      ..strokeWidth = 2
+      ..color = Colors.white
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round;
+    circlePath.moveTo(200, 300);
+    paint.color = Colors.white;
+    canvas.drawCircle(Offset(240, 210), 4, ciPaint);
+
+    Path linePath = Path();
+    paint.color = Colors.black;
+    // canvas.drawPath(linePath, paint);
+
+    // var radius = 100;
+    // var sides = 4;
+
+    // var angle = (math.pi * 2) / sides;
+
+    // Offset center = Offset(175, 140);
+    // Offset startPoint = Offset(radius * math.cos(0.0), radius * math.sin(0.0));
+    // linePath.moveTo(startPoint.dx + center.dx, startPoint.dy + center.dy);
+
+    // for (int i = 1; i <= sides; i++) {
+    //   double x = radius * math.cos(angle * i) + center.dx;
+    //   double y = radius * math.sin(angle * i) + center.dy;
+    //   linePath.lineTo(x, y);
+    // }
+    // linePath.close();
+
+    // linePath.moveTo(165, 50);
+    linePath.moveTo(160, 50);
+    linePath.lineTo(90, 125);
+    linePath.quadraticBezierTo(75, 140, 90, 155); //second corner
+    linePath.lineTo(160, 226);
+    linePath.moveTo(190, 226);
+    linePath.lineTo(260, 155);
+    linePath.moveTo(260, 125);
+    linePath.lineTo(188, 50);
+    linePath.moveTo(160, 50);
+    linePath.quadraticBezierTo(175, 35, 188, 50); //first corner
+    linePath.moveTo(160, 226);
+    linePath.quadraticBezierTo(175, 242, 190, 226); //third corner
+    linePath.moveTo(260, 155);
+    linePath.quadraticBezierTo(276, 140, 260, 125); //fourth corner
+    linePath.moveTo(260, 125);
+    linePath.close();
+    linePath.moveTo(155, 40);
+    linePath.lineTo(80, 120);
+    linePath.quadraticBezierTo(60, 138, 78, 158);
+    linePath.moveTo(78, 158);
+    linePath.lineTo(150, 230);
+    linePath.quadraticBezierTo(160, 240, 173, 233);
+
+    linePath.moveTo(155, 40);
+    // linePath.quadraticBezierTo(x1, y1, x2, y2)
+
+    canvas.drawPath(linePath, paint);
+  }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {
