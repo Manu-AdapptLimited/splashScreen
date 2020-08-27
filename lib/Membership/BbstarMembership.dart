@@ -165,7 +165,6 @@ class MyPainter extends CustomPainter {
     Paint painter = Paint();
     mainBackGround.addRect(Rect.fromLTRB(0, 0, width, height));
     painter.color = Color.fromRGBO(104, 159, 57, 1);
-    // paint.color = Colors.white;
     painter.style = PaintingStyle.fill;
     canvas.drawPath(mainBackGround, painter);
 
@@ -234,8 +233,8 @@ class MyPainter extends CustomPainter {
     couponPath.lineTo(76, 610);
     couponPath.lineTo(70, 617);
     couponPath.lineTo(60, 610);
-    // paint.color = Color.fromRGBO(60, 90, 30, 0.5);
-    // paint.style = PaintingStyle.fill;
+    paint.color = Color.fromRGBO(60, 90, 30, 0.5);
+    paint.style = PaintingStyle.fill;
     couponPath.close();
     canvas.drawPath(couponPath, paint);
 
@@ -322,7 +321,8 @@ class MyPainter extends CustomPainter {
     canvas.drawCircle(Offset(240, 210), 4, ciPaint);
 
     Path linePath = Path();
-    Paint bbStarPaint = Paint();
+    Paint bbStarPaint = Paint()
+      ..maskFilter = MaskFilter.blur(BlurStyle.solid, 5);
     bbStarPaint.color = Colors.white;
     bbStarPaint.style = PaintingStyle.fill;
     // canvas.drawPath(linePath, paint);
@@ -343,49 +343,41 @@ class MyPainter extends CustomPainter {
     // }
     // linePath.close();
 
+    Path linePaths = Path();
+    Paint sidePaint = Paint()
+      ..strokeWidth = 2.2
+      ..isAntiAlias = true
+      ..style = PaintingStyle.fill
+      ..color = Color.fromRGBO(33, 195, 145, 0.6);
+
+    linePaths.moveTo(170, 45);
+    linePaths.quadraticBezierTo(160, 33, 150, 45);
+    linePaths.lineTo(80, 120);
+    linePaths.quadraticBezierTo(60, 138, 78, 158);
+    linePaths.lineTo(150, 230);
+    linePaths.quadraticBezierTo(160, 240, 173, 233);
+   
+    linePaths.close();
+    canvas.drawPath(linePaths, sidePaint);
+
     linePath.moveTo(160, 50);
     linePath.lineTo(90, 125);
     linePath.quadraticBezierTo(75, 140, 90, 155); //second corner
     linePath.lineTo(160, 226);
     linePath.lineTo(260, 155);
-    linePath.moveTo(260, 125);
     linePath.moveTo(160, 50);
-    linePath.quadraticBezierTo(175, 35, 188, 50); //first corner
     linePath.lineTo(260, 125);
     linePath.moveTo(160, 226);
     linePath.quadraticBezierTo(175, 242, 190, 226); //third corner
     linePath.lineTo(260, 155);
-    linePath.quadraticBezierTo(276, 140, 260, 125); //fourth corner
-    linePath.lineTo(260, 125);
+    linePath.quadraticBezierTo(276, 140, 260, 125); //forth corner
+    linePath.lineTo(190, 50);
+    linePath.quadraticBezierTo(175, 31, 160, 50); //first corner
+
     linePath.close();
     canvas.drawPath(linePath, bbStarPaint); //square  end here
 
     //second square part
-    Path linePaths = Path();
-    linePaths.moveTo(150, 45);
-    linePaths.lineTo(80, 120);
-    linePaths.quadraticBezierTo(60, 138, 78, 158);
-    linePaths.moveTo(78, 158);
-    linePaths.lineTo(150, 230);
-    linePaths.quadraticBezierTo(160, 240, 173, 233);
-    linePaths.moveTo(150, 45);
-    linePaths.quadraticBezierTo(160, 34, 170, 44);
-    linePaths.moveTo(168, 42);
-    linePaths.lineTo(90, 125);
-    linePaths.moveTo(90, 125);
-    linePaths.quadraticBezierTo(75, 140, 90, 155);
-    linePaths.lineTo(170, 235);
-    linePaths.quadraticBezierTo(160, 240, 150, 230);
-    linePaths.lineTo(78, 158);
-    linePaths.quadraticBezierTo(60, 138, 80, 120);
-    linePaths.lineTo(150, 45);
-    linePaths.quadraticBezierTo(160, 34, 170, 41);
-    linePaths.lineTo(90, 125);
-    // paint.color = Colors.red;
-    // linePath.close();
-    linePaths.close();
-
-    canvas.drawPath(linePaths, paint);
 
     final bbtextStyle = TextStyle(
       color: Colors.black54,
