@@ -375,6 +375,8 @@ class MyPainter extends CustomPainter {
 
     linePath.moveTo(150, 45);
     linePath.quadraticBezierTo(160, 34, 170, 44);
+    linePath.moveTo(170, 44);
+    linePath.close();
 
     canvas.drawPath(linePath, paint);
   }
