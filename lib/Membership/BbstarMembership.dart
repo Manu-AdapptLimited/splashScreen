@@ -27,14 +27,14 @@ class _BbstarMembershipState extends State<BbstarMembership> {
                 width: MediaQuery.of(context).size.width,
                 child: Stack(
                   children: [
-                    // Positioned(
-                    //   left: 70,
-                    //   top: 20,
-                    //   child: Container(
-                    //       height: 210,
-                    //       child: Image.asset('assets/images/members.gif',
-                    //           fit: BoxFit.cover)),
-                    // ),
+                    Positioned(
+                      left: 120,
+                      top: 95,
+                      child: Container(
+                          height: 50,
+                          child: Image.asset('assets/images/bbstar2.png',
+                              fit: BoxFit.cover)),
+                    ),
                     Positioned(
                         left: 40,
                         top: 40,
@@ -102,10 +102,11 @@ class _BbstarMembershipState extends State<BbstarMembership> {
 class MyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
+    
     final height = size.height;
     final width = size.width;
     Paint paint = Paint()
-      // ..maskFilter =MaskFilter.blur(BlurStyle.inner, 10.0)
+      // ..maskFilter =MaskFilter.blur(BlurStyle.outer, 2.0)
       ..strokeWidth = 2.2
       ..isAntiAlias = true
       ..style = PaintingStyle.stroke
@@ -162,11 +163,13 @@ class MyPainter extends CustomPainter {
     final Paint curvePaint = Paint()..shader = curveGradient.createShader(rect);
 
     Path mainBackGround = Path();
+    Paint painter = Paint();
     mainBackGround.addRect(Rect.fromLTRB(0, 0, width, height));
-    // paint.color = Color.fromRGBO(104, 159, 57, 1);
-    paint.color = Colors.white;
-    // paint.style = PaintingStyle.fill;
-    canvas.drawPath(mainBackGround, paint);
+    painter.color = Color.fromRGBO(104, 159, 57, 1);
+    // paint.color = Colors.white;
+    painter.style = PaintingStyle.fill;
+    canvas.drawPath(mainBackGround, painter);
+    
     //Half circle diamension
     var halfCircle = Offset(0, height * 0.22);
     canvas.drawCircle(halfCircle, 60, circlePaint);
@@ -272,7 +275,6 @@ class MyPainter extends CustomPainter {
     textPainters.paint(canvas, Offset(41.0, 620.0));
 
     Path rectPath = Path();
-
     final Gradient rectGradient = LinearGradient(
         // begin: Alignment.topLeft,
         // end: Alignment.bottomRight,
@@ -325,12 +327,13 @@ class MyPainter extends CustomPainter {
       ..color = Colors.white
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
-    circlePath.moveTo(200, 300);
-    paint.color = Colors.white;
+     paint.color = Colors.white;
     canvas.drawCircle(Offset(240, 210), 4, ciPaint);
 
     Path linePath = Path();
-    paint.color = Colors.black;
+    Paint bbStarPaint = Paint();
+    bbStarPaint.color = Colors.white;
+    bbStarPaint.style = PaintingStyle.fill;
     // canvas.drawPath(linePath, paint);
 
     // var radius = 100;
@@ -349,7 +352,7 @@ class MyPainter extends CustomPainter {
     // }
     // linePath.close();
 
-    // linePath.moveTo(165, 50);
+    linePath.moveTo(165, 50);
     linePath.moveTo(160, 50);
     linePath.lineTo(90, 125);
     linePath.quadraticBezierTo(75, 140, 90, 155); //second corner
@@ -366,19 +369,93 @@ class MyPainter extends CustomPainter {
     linePath.quadraticBezierTo(276, 140, 260, 125); //fourth corner
     linePath.moveTo(260, 125);
     linePath.close();
-    linePath.moveTo(150, 45);
-    linePath.lineTo(80, 120);
-    linePath.quadraticBezierTo(60, 138, 78, 158);
-    linePath.moveTo(78, 158);
-    linePath.lineTo(150, 230);
-    linePath.quadraticBezierTo(160, 240, 173, 233);
+    canvas.drawPath(linePath, bbStarPaint); //square  end here
 
-    linePath.moveTo(150, 45);
-    linePath.quadraticBezierTo(160, 34, 170, 44);
-    linePath.moveTo(170, 44);
-    linePath.close();
+    //second square part
+    Path linePaths = Path();
+    linePaths.moveTo(150, 45);
+    linePaths.lineTo(80, 120);
+    linePaths.quadraticBezierTo(60, 138, 78, 158);
+    linePaths.moveTo(78, 158);
+    linePaths.lineTo(150, 230);
+    linePaths.quadraticBezierTo(160, 240, 173, 233);
+    linePaths.moveTo(150, 45);
+    linePaths.quadraticBezierTo(160, 34, 170, 44);
+    linePaths.moveTo(168, 42);
+    linePaths.lineTo(90, 125);
+    linePaths.moveTo(90, 125);
+    linePaths.quadraticBezierTo(75, 140, 90, 155);
+    linePaths.lineTo(170, 235);
+    linePaths.quadraticBezierTo(160, 240, 150, 230);
+    linePaths.lineTo(78, 158);
+    linePaths.quadraticBezierTo(60, 138, 80, 120);
+    linePaths.lineTo(150, 45);
+    linePaths.quadraticBezierTo(160, 34, 170, 41);
+    linePaths.lineTo(90, 125);
+    // paint.color = Colors.red;
+    // linePath.close();
+    linePaths.close();
 
-    canvas.drawPath(linePath, paint);
+    canvas.drawPath(linePaths, paint);
+
+    final bbtextStyle = TextStyle(
+      color: Colors.black54,
+      fontSize: 10,
+    );
+    final bbtextSpan = TextSpan(
+      text: 'Introducing',
+      style: bbtextStyle,
+    );
+    final bbtextPainter = TextPainter(
+      text: bbtextSpan,
+      textDirection: TextDirection.ltr,
+    );
+    bbtextPainter.layout(
+        // minWidth: 0,
+        // maxWidth: size.width,
+        );
+    final bboffset = Offset(150, 80);
+    bbtextPainter.paint(canvas, bboffset);
+
+    final btextStyle = TextStyle(
+      color: Color.fromRGBO(104, 159, 57, 1),
+      fontSize: 17,
+      fontWeight: FontWeight.bold,
+    );
+    final btextSpan = TextSpan(
+      text: 'Big Saving!',
+      style: btextStyle,
+    );
+    final btextPainter = TextPainter(
+      text: btextSpan,
+      textDirection: TextDirection.ltr,
+    );
+    btextPainter.layout(
+        // minWidth: 0,
+        // maxWidth: size.width,
+        );
+    final boffset = Offset(110, 145);
+    btextPainter.paint(canvas, boffset);
+
+    final textStl = TextStyle(
+      color: Color.fromRGBO(104, 159, 57, 1),
+      fontSize: 17,
+      fontWeight: FontWeight.bold,
+    );
+    final textSpn = TextSpan(
+      text: 'Big Benefits!',
+      style: textStl,
+    );
+    final textPaintr = TextPainter(
+      text: textSpn,
+      textDirection: TextDirection.ltr,
+    );
+    textPaintr.layout(
+        // minWidth: 0,
+        // maxWidth: size.width,
+        );
+    final starOffset = Offset(125, 165);
+    textPaintr.paint(canvas, starOffset);
   }
 
   @override
