@@ -5,3 +5,4 @@ export 'package:splash_screen/Faqs/Faq.dart';
 export 'SmartBasket/SmartBasket.dart';
 export 'WelcomeScreen/WelcomeScreen.dart';
 export 'Membership/BbstarMembership.dart';
+export 'WriteOn/WriteOn.dart';

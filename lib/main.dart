@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:splash_screen/dartpad/DartPad.dart';
 
 import 'Exports.dart';
-
-
-
-
-
 
 void main() {
   runApp(MyApp());
@@ -20,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home:BbstarMembership(),
+      home:WriteOn(),
     );
   }
 }
